@@ -1,83 +1,62 @@
-!SESSION 2021-10-05 15:41:21.407 -----------------------------------------------
+!SESSION 2021-10-06 13:36:38.181 -----------------------------------------------
 eclipse.buildId=Version 1.7.0
 java.version=11.0.10
 java.vendor=AdoptOpenJDK
 BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=pt_BR
-Command-line arguments:  -os linux -ws gtk -arch x86_64
+Framework arguments:  /home/matheus/Documentos/10-CNPq_Usinagem/CodigosPrototipo/STM32F04ZGT6/.project
+Command-line arguments:  -os linux -ws gtk -arch x86_64 /home/matheus/Documentos/10-CNPq_Usinagem/CodigosPrototipo/STM32F04ZGT6/.project
 
-!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-10-05 15:41:47.472
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2021-10-06 13:37:25.902
 !MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
 
-!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-10-05 15:41:47.536
-!MESSAGE Log4j initialized with config file /home/matheus/Documentos/10-CNPq_Usinagem/CodigosPrototipo/STM32f407ze_mainWhile/.metadata/.log4j.xml
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2021-10-06 13:37:25.989
+!MESSAGE Log4j initialized with config file /home/matheus/Documentos/10-CNPq_Usinagem/CodigosPrototipo/STM32F04ZGT6/.metadata/.log4j.xml
 
-!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-10-05 15:41:54.621
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2021-10-06 13:37:33.801
 !MESSAGE Started RMI Server, listening on port 41337
 
-!ENTRY org.eclipse.ui 4 4 2021-10-05 16:01:45.919
-!MESSAGE Unable to create part
-!STACK 1
-org.eclipse.ui.PartInitException: Invalid Input: Must be IFileEditorInput
-	at com.st.stm32cube.common.mx.editor.CubeMxEditor.init(CubeMxEditor.java:799)
-	at org.eclipse.ui.internal.EditorReference.initialize(EditorReference.java:353)
-	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:344)
+!ENTRY org.eclipse.ui 4 0 2021-10-06 14:35:26.159
+!MESSAGE Unhandled event loop exception
+!STACK 0
+org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4889)
+	at org.eclipse.swt.SWT.error(SWT.java:4804)
+	at org.eclipse.swt.SWT.error(SWT.java:4775)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:555)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:470)
+	at org.eclipse.swt.widgets.Label.setImage(Label.java:629)
+	at org.eclipse.jface.dialogs.TitleAreaDialog.setTitleImage(TitleAreaDialog.java:664)
+	at org.eclipse.jface.wizard.WizardDialog.hardClose(WizardDialog.java:893)
+	at org.eclipse.jface.wizard.WizardDialog.close(WizardDialog.java:520)
+	at org.eclipse.jface.wizard.WizardDialog.cancelPressed(WizardDialog.java:511)
+	at org.eclipse.jface.wizard.WizardDialog.lambda$0(WizardDialog.java:315)
+	at org.eclipse.swt.events.SelectionListener$1.widgetSelected(SelectionListener.java:84)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:252)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:5831)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1427)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:5092)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4570)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:823)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.ui.internal.handlers.WizardHandler$Import.executeHandler(WizardHandler.java:153)
+	at org.eclipse.ui.internal.handlers.WizardHandler.execute(WizardHandler.java:283)
+	at org.eclipse.ui.internal.handlers.HandlerProxy.execute(HandlerProxy.java:283)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
 	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:999)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:964)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:140)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:405)
-	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:332)
-	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:202)
-	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:91)
-	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:60)
-	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:42)
-	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:132)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:999)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:659)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:765)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:714)
-	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.lambda$0(PartServiceImpl.java:104)
-	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.lambda$0(UIEventHandler.java:38)
-	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:236)
-	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:133)
-	at org.eclipse.swt.widgets.Display.syncExec(Display.java:5941)
-	at org.eclipse.e4.ui.workbench.swt.DisplayUISynchronize.syncExec(DisplayUISynchronize.java:34)
-	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:38)
-	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:205)
-	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:203)
-	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
-	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
-	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:151)
-	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:133)
-	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:75)
-	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:44)
-	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:55)
-	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:63)
-	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:424)
-	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElementGen(ElementContainerImpl.java:170)
-	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElement(ElementContainerImpl.java:188)
-	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.showElementInWindow(ModelServiceImpl.java:660)
-	at org.eclipse.e4.ui.internal.workbench.ModelServiceImpl.bringToTop(ModelServiceImpl.java:624)
-	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.delegateBringToTop(PartServiceImpl.java:786)
-	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.bringToTop(PartServiceImpl.java:400)
-	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.showPart(PartServiceImpl.java:1260)
-	at org.eclipse.ui.internal.WorkbenchPage.busyOpenEditor(WorkbenchPage.java:3195)
-	at org.eclipse.ui.internal.WorkbenchPage.lambda$9(WorkbenchPage.java:3100)
-	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
-	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3098)
-	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3068)
-	at org.eclipse.ui.internal.WorkbenchPage.openEditor(WorkbenchPage.java:3051)
-	at org.eclipse.ui.ide.IDE.openEditorOnFileStore(IDE.java:1376)
-	at org.eclipse.ui.internal.ide.actions.OpenLocalFileAction.run(OpenLocalFileAction.java:100)
-	at org.eclipse.ui.internal.ide.actions.OpenLocalFileAction.run(OpenLocalFileAction.java:73)
-	at org.eclipse.ui.internal.PluginAction.runWithEvent(PluginAction.java:239)
-	at org.eclipse.ui.internal.WWinPluginAction.runWithEvent(WWinPluginAction.java:218)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:319)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:253)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
+	at org.eclipse.ui.internal.handlers.LegacyHandlerService.executeCommand(LegacyHandlerService.java:389)
+	at org.eclipse.ui.internal.actions.CommandAction.runWithEvent(CommandAction.java:142)
 	at org.eclipse.jface.action.ActionContributionItem.handleWidgetSelection(ActionContributionItem.java:580)
 	at org.eclipse.jface.action.ActionContributionItem.lambda$4(ActionContributionItem.java:414)
 	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
@@ -107,5 +86,6 @@ org.eclipse.ui.PartInitException: Invalid Input: Must be IFileEditorInput
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1461)
 	at org.eclipse.equinox.launcher.Main.main(Main.java:1434)
-!SUBENTRY 1 org.eclipse.ui 4 0 2021-10-05 16:01:45.919
-!MESSAGE Invalid Input: Must be IFileEditorInput
+
+!ENTRY org.eclipse.cdt.core 1 0 2021-10-06 14:36:13.240
+!MESSAGE Indexed 'STM32f407ze_mainWhile' (24 sources, 106 headers) in 4.15 sec: 9,919 declarations; 49,101 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0.25%)

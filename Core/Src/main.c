@@ -26,6 +26,7 @@
 #include "stdint.h"
 #include "string.h"
 #include <math.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -36,6 +37,7 @@
    AQ_INIT        = 0x01U,
    AQ_ENVIA       = 0x02U,
  } Aq_StatusTypeDef;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -67,19 +69,21 @@ int i = 0;
 int j=0;
 int w=0;
 int z=0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_TIM1_Init(void);
 static void MX_FSMC_Init(void);
 static void MX_SPI1_Init(void);
+static void MX_TIM1_Init(void);
 /* USER CODE BEGIN PFP */
 void AD7606_Reset(void);
 void AD7606_StartConvst(void);
 void AD7606_SetOS(void);
 void AD7606_SetInputRange(void);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -94,8 +98,8 @@ void AD7606_SetInputRange(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
 	Count_Tmr1 =  floorf(Count= ((1/Taxa_Aq_Hz)/(1/(168000000/(Presc+1)))));
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -116,16 +120,17 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_TIM1_Init();
   MX_FSMC_Init();
   MX_SPI1_Init();
+  MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
- //HAL_TIM_Base_Start_IT(&htim1);
- //HAL_TIM_Base_Start_ITBREAK(&htim1);
-  AD7606_Reset();
-  AD7606_SetOS();
-  AD7606_SetInputRange();
-  AQST= AQ_BREAK;
+  //HAL_TIM_Base_Start_IT(&htim1);
+  //HAL_TIM_Base_Start_ITBREAK(&htim1);
+   AD7606_Reset();
+   AD7606_SetOS();
+   AD7606_SetInputRange();
+   AQST= AQ_BREAK;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -338,7 +343,7 @@ static void MX_TIM1_Init(void)
   htim1.Init.Period = 666;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
-  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
   {
     Error_Handler();
@@ -348,7 +353,7 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim1, &sMasterConfig) != HAL_OK)
   {
@@ -392,10 +397,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(Init_Aq_GPIO_Port, Init_Aq_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(RESET_GPIO_Port, RESET_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(CONVST_GPIO_Port, CONVST_Pin, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOB, RESET_Pin|CONVST_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : K1_Pin K0_Pin */
   GPIO_InitStruct.Pin = K1_Pin|K0_Pin;
@@ -428,7 +430,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = Init_Aq_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(Init_Aq_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : FRSTD_Pin */
@@ -437,25 +439,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(FRSTD_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : RESET_Pin */
-  GPIO_InitStruct.Pin = RESET_Pin;
+  /*Configure GPIO pins : RESET_Pin CONVST_Pin */
+  GPIO_InitStruct.Pin = RESET_Pin|CONVST_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RESET_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : BUSY_Pin */
   GPIO_InitStruct.Pin = BUSY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(BUSY_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : CONVST_Pin */
-  GPIO_InitStruct.Pin = CONVST_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(CONVST_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : Init_Conv_Pin */
   GPIO_InitStruct.Pin = Init_Conv_Pin;
@@ -586,6 +581,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     }
 
 }
+
 /* USER CODE END 4 */
 
 /**
