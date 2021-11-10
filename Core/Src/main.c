@@ -430,7 +430,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = Init_Aq_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
   HAL_GPIO_Init(Init_Aq_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : FRSTD_Pin */
@@ -439,18 +439,25 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(FRSTD_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : RESET_Pin CONVST_Pin */
-  GPIO_InitStruct.Pin = RESET_Pin|CONVST_Pin;
+  /*Configure GPIO pin : RESET_Pin */
+  GPIO_InitStruct.Pin = RESET_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(RESET_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : BUSY_Pin */
   GPIO_InitStruct.Pin = BUSY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(BUSY_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : CONVST_Pin */
+  GPIO_InitStruct.Pin = CONVST_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  HAL_GPIO_Init(CONVST_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : Init_Conv_Pin */
   GPIO_InitStruct.Pin = Init_Conv_Pin;
