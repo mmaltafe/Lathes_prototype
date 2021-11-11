@@ -131,6 +131,10 @@ int main(void)
    AD7606_SetInputRange();
    AQST= AQ_BREAK;
 
+
+	HAL_GPIO_WritePin(GPIOF, D1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOF, D2_Pin, GPIO_PIN_SET);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -141,6 +145,7 @@ int main(void)
 	  if(AQST == AQ_INIT)
 	  {
 		  HAL_GPIO_WritePin(GPIOF, D1_Pin, GPIO_PIN_RESET);
+
 
 			HAL_SRAM_Read_16b(&hsram4,(uint32_t *) 0x6C000000, &valor, 1);
 			RawData[i]=((valor>>8) & 255);
@@ -208,14 +213,15 @@ int main(void)
 	  }
 	  else if(AQST== AQ_ENVIA)
 	  {
+			HAL_GPIO_WritePin(GPIOF, D2_Pin, GPIO_PIN_RESET);
 
 		  HAL_GPIO_WritePin(GPIOG, Init_Aq_Pin, GPIO_PIN_SET);
 		 // if(HAL_GPIO_ReadPin(GPIOB, Init_Conv_Pin) == GPIO_PIN_SET)
 		 // {
-		  while (HAL_GPIO_ReadPin(GPIOB, Init_Conv_Pin) == GPIO_PIN_SET)
-		 {
+		  //while (HAL_GPIO_ReadPin(GPIOB, Init_Conv_Pin) == GPIO_PIN_SET)
+		 //{
 			  HAL_SPI_Transmit(&hspi1, RawData, 28672, 2000);
-		 }
+		 //}
 
 
 			  HAL_GPIO_WritePin(GPIOG, Init_Aq_Pin, GPIO_PIN_RESET);
@@ -228,7 +234,10 @@ int main(void)
 		  i=0;
 		  w=0;
 		 // HAL_TIM_Base_Start_IT(&htim1);
-		  HAL_GPIO_WritePin(GPIOF, D1_Pin, GPIO_PIN_SET);
+		  // HAL_GPIO_WritePin(GPIOF, D1_Pin, GPIO_PIN_SET);
+
+			HAL_GPIO_WritePin(GPIOF, D2_Pin, GPIO_PIN_SET);
+
 		  AQST= AQ_BREAK;
 	  }
     /* USER CODE END WHILE */
